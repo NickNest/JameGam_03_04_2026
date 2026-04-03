@@ -16,6 +16,14 @@ internal class InputResolver : MonoBehaviour, IInputResolver
 
     private readonly List<RaycastResult> _uiRaycastResults = new();
 
+    public void ManualAwake()
+    {
+        if (Camera.main == null)
+        {
+            Debug.LogWarning($"[{nameof(InputResolver)}] No main camera found. World raycasts will not work.");
+        }
+    }
+
     private void Update()
     {
         var mouse = Mouse.current;
