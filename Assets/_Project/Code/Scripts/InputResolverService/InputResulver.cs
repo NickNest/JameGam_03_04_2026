@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 internal class InputResolver : MonoBehaviour, IInputResolver
 {
@@ -14,34 +15,37 @@ internal class InputResolver : MonoBehaviour, IInputResolver
     [SerializeField] private LayerMask _worldLayerMask = ~0;
 
     private readonly List<RaycastResult> _uiRaycastResults = new();
-    private static readonly int[] ButtonIndices = { 0, 1, 2 };
 
     private void Update()
     {
-        for (int i = 0; i < ButtonIndices.Length; i++)
+        var mouse = Mouse.current;
+        if (mouse == null) return;
+
+        ProcessButton(mouse.leftButton, MouseButton.Left);
+        ProcessButton(mouse.rightButton, MouseButton.Right);
+        ProcessButton(mouse.middleButton, MouseButton.Middle);
+    }
+
+    private void ProcessButton(UnityEngine.InputSystem.Controls.ButtonControl control, MouseButton button)
+    {
+        if (control.wasPressedThisFrame)
         {
-            int index = ButtonIndices[i];
-            var button = (MouseButton)index;
+            OnPointerDown?.Invoke(BuildEventData(button));
+        }
+        else if (control.isPressed)
+        {
+            OnPointerHeld?.Invoke(BuildEventData(button));
+        }
 
-            if (Input.GetMouseButtonDown(index))
-            {
-                OnPointerDown?.Invoke(BuildEventData(button));
-            }
-            else if (Input.GetMouseButton(index))
-            {
-                OnPointerHeld?.Invoke(BuildEventData(button));
-            }
-
-            if (Input.GetMouseButtonUp(index))
-            {
-                OnPointerUp?.Invoke(BuildEventData(button));
-            }
+        if (control.wasReleasedThisFrame)
+        {
+            OnPointerUp?.Invoke(BuildEventData(button));
         }
     }
 
     private InputEventData BuildEventData(MouseButton button)
     {
-        Vector2 screenPos = Input.mousePosition;
+        Vector2 screenPos = Mouse.current.position.ReadValue();
 
         if (IsPointerOverUI(screenPos, out GameObject uiElement))
             return new InputEventData(button, InputTarget.Canvas, screenPos, uiElement, null);
