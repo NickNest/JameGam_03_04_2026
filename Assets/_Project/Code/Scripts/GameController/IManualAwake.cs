@@ -1,7 +1,7 @@
 namespace _Project.Code.Scripts.GameController
 {
-    public interface IManualAwake
+    public interface IManualUpdate
     {
-        void ManualAwake(float deltaTime);
+        void ManualUpdate(float deltaTime);
     }
 }

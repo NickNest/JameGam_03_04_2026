@@ -5,9 +5,9 @@ namespace _Project.Code.Scripts.GameController
 {
     public class GameController : MonoBehaviour {
 
-        private List<IManualAwake> _manualAwakes = new();
+        private List<IManualUpdate> _manualAwakes = new();
 
-        public void ManualAwake(List<IManualAwake> manualAwakes) {
+        public void ManualAwake(List<IManualUpdate> manualAwakes) {
             _manualAwakes = manualAwakes;
         }
 
@@ -19,7 +19,7 @@ namespace _Project.Code.Scripts.GameController
         {
             foreach (var manualAwake in _manualAwakes)
             {
-                manualAwake.ManualAwake(Time.deltaTime);
+                manualAwake.ManualUpdate(Time.deltaTime);
             }
         }
     }

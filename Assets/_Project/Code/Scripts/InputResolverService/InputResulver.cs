@@ -7,7 +7,7 @@ using _Project.Code.Scripts.GameController;
 
 namespace _Project.Code.Scripts.InputResolverService
 {
-    internal class InputResolver : MonoBehaviour, IInputResolver, IManualAwake
+    internal class InputResolver : MonoBehaviour, IInputResolver, IManualUpdate
     {
         public event Action<InputEventData> OnPointerDown;
         public event Action<InputEventData> OnPointerHeld;
@@ -27,7 +27,7 @@ namespace _Project.Code.Scripts.InputResolverService
             }
         }
 
-        public void ManualAwake(float deltaTime)
+        public void ManualUpdate(float deltaTime)
         {
             var mouse = Mouse.current;
             if (mouse == null) return;
