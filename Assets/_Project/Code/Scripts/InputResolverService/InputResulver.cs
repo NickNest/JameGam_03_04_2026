@@ -3,99 +3,103 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using _Project.Code.Scripts.GameController;
 
-internal class InputResolver : MonoBehaviour, IInputResolver, IManualAwake
+namespace _Project.Code.Scripts.InputResolverService
 {
-    public event Action<InputEventData> OnPointerDown;
-    public event Action<InputEventData> OnPointerHeld;
-    public event Action<InputEventData> OnPointerUp;
-
-    [SerializeField] private Camera _camera;
-    [SerializeField] private float _worldRaycastDistance = 1000f;
-    [SerializeField] private LayerMask _worldLayerMask = ~0;
-
-    private readonly List<RaycastResult> _uiRaycastResults = new();
-
-    public void ManualAwake()
+    internal class InputResolver : MonoBehaviour, IInputResolver, IManualAwake
     {
-        if (Camera.main == null)
-        {
-            Debug.LogWarning($"[{nameof(InputResolver)}] No main camera found. World raycasts will not work.");
-        }
-    }
+        public event Action<InputEventData> OnPointerDown;
+        public event Action<InputEventData> OnPointerHeld;
+        public event Action<InputEventData> OnPointerUp;
 
-    public void ManualAwake(float deltaTime)
-    {
-        var mouse = Mouse.current;
-        if (mouse == null) return;
+        [SerializeField] private Camera _camera;
+        [SerializeField] private float _worldRaycastDistance = 1000f;
+        [SerializeField] private LayerMask _worldLayerMask = ~0;
 
-        ProcessButton(mouse.leftButton, MouseButton.Left);
-        ProcessButton(mouse.rightButton, MouseButton.Right);
-        ProcessButton(mouse.middleButton, MouseButton.Middle);
-    }
+        private readonly List<RaycastResult> _uiRaycastResults = new();
 
-    private void ProcessButton(UnityEngine.InputSystem.Controls.ButtonControl control, MouseButton button)
-    {
-        if (control.wasPressedThisFrame)
+        public void ManualAwake()
         {
-            OnPointerDown?.Invoke(BuildEventData(button));
-        }
-        else if (control.isPressed)
-        {
-            OnPointerHeld?.Invoke(BuildEventData(button));
+            if (Camera.main == null)
+            {
+                Debug.LogWarning($"[{nameof(InputResolver)}] No main camera found. World raycasts will not work.");
+            }
         }
 
-        if (control.wasReleasedThisFrame)
+        public void ManualAwake(float deltaTime)
         {
-            OnPointerUp?.Invoke(BuildEventData(button));
-        }
-    }
+            var mouse = Mouse.current;
+            if (mouse == null) return;
 
-    private InputEventData BuildEventData(MouseButton button)
-    {
-        Vector2 screenPos = Mouse.current.position.ReadValue();
-
-        if (IsPointerOverUI(screenPos, out GameObject uiElement))
-            return new InputEventData(button, InputTarget.Canvas, screenPos, uiElement, null);
-
-        if (TryWorldRaycast(screenPos, out RaycastHit hit))
-            return new InputEventData(button, InputTarget.World, screenPos, hit.collider.gameObject, hit);
-
-        return new InputEventData(button, InputTarget.None, screenPos, null, null);
-    }
-
-    private bool IsPointerOverUI(Vector2 screenPos, out GameObject uiElement)
-    {
-        uiElement = null;
-
-        if (EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())
-            return false;
-
-        var pointerData = new PointerEventData(EventSystem.current) { position = screenPos };
-
-        _uiRaycastResults.Clear();
-        EventSystem.current.RaycastAll(pointerData, _uiRaycastResults);
-
-        if (_uiRaycastResults.Count > 0)
-        {
-            uiElement = _uiRaycastResults[0].gameObject;
-            return true;
+            ProcessButton(mouse.leftButton, MouseButton.Left);
+            ProcessButton(mouse.rightButton, MouseButton.Right);
+            ProcessButton(mouse.middleButton, MouseButton.Middle);
         }
 
-        return false;
-    }
-
-    private bool TryWorldRaycast(Vector2 screenPos, out RaycastHit hit)
-    {
-        Camera cam = _camera ? _camera : Camera.main;
-
-        if (cam == null)
+        private void ProcessButton(UnityEngine.InputSystem.Controls.ButtonControl control, MouseButton button)
         {
-            hit = default;
+            if (control.wasPressedThisFrame)
+            {
+                OnPointerDown?.Invoke(BuildEventData(button));
+            }
+            else if (control.isPressed)
+            {
+                OnPointerHeld?.Invoke(BuildEventData(button));
+            }
+
+            if (control.wasReleasedThisFrame)
+            {
+                OnPointerUp?.Invoke(BuildEventData(button));
+            }
+        }
+
+        private InputEventData BuildEventData(MouseButton button)
+        {
+            Vector2 screenPos = Mouse.current.position.ReadValue();
+
+            if (IsPointerOverUI(screenPos, out GameObject uiElement))
+                return new InputEventData(button, InputTarget.Canvas, screenPos, uiElement, null);
+
+            if (TryWorldRaycast(screenPos, out RaycastHit hit))
+                return new InputEventData(button, InputTarget.World, screenPos, hit.collider.gameObject, hit);
+
+            return new InputEventData(button, InputTarget.None, screenPos, null, null);
+        }
+
+        private bool IsPointerOverUI(Vector2 screenPos, out GameObject uiElement)
+        {
+            uiElement = null;
+
+            if (EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())
+                return false;
+
+            var pointerData = new PointerEventData(EventSystem.current) { position = screenPos };
+
+            _uiRaycastResults.Clear();
+            EventSystem.current.RaycastAll(pointerData, _uiRaycastResults);
+
+            if (_uiRaycastResults.Count > 0)
+            {
+                uiElement = _uiRaycastResults[0].gameObject;
+                return true;
+            }
+
             return false;
         }
 
-        Ray ray = cam.ScreenPointToRay(screenPos);
-        return Physics.Raycast(ray, out hit, _worldRaycastDistance, _worldLayerMask);
+        private bool TryWorldRaycast(Vector2 screenPos, out RaycastHit hit)
+        {
+            Camera cam = _camera ? _camera : Camera.main;
+
+            if (cam == null)
+            {
+                hit = default;
+                return false;
+            }
+
+            Ray ray = cam.ScreenPointToRay(screenPos);
+            return Physics.Raycast(ray, out hit, _worldRaycastDistance, _worldLayerMask);
+        }
     }
 }

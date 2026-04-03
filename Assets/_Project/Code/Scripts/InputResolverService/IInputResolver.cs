@@ -1,8 +1,11 @@
 using System;
 
-internal interface IInputResolver
+namespace _Project.Code.Scripts.InputResolverService
 {
-    event Action<InputEventData> OnPointerDown;
-    event Action<InputEventData> OnPointerHeld;
-    event Action<InputEventData> OnPointerUp;
+    internal interface IInputResolver
+    {
+        event Action<InputEventData> OnPointerDown;
+        event Action<InputEventData> OnPointerHeld;
+        event Action<InputEventData> OnPointerUp;
+    }
 }
