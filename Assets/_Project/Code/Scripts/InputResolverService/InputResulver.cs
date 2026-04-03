@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-internal class InputResolver : MonoBehaviour, IInputResolver
+internal class InputResolver : MonoBehaviour, IInputResolver, IManualAwake
 {
     public event Action<InputEventData> OnPointerDown;
     public event Action<InputEventData> OnPointerHeld;
@@ -24,7 +24,7 @@ internal class InputResolver : MonoBehaviour, IInputResolver
         }
     }
 
-    private void Update()
+    public void ManualAwake(float deltaTime)
     {
         var mouse = Mouse.current;
         if (mouse == null) return;

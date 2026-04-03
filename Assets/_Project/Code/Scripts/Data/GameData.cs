@@ -20,10 +20,10 @@ namespace _Project.Code.Scripts.Data
 
         private void GenerateResourceData()
         {
-            Resources.Add(ResourceType.Crystal, new ResourceData(ResourceType.Credit, _config.CreditStartAmount));
             Resources.Add(ResourceType.Crystal, new ResourceData(ResourceType.Crystal, _config.CrystalStartAmount));
             Resources.Add(ResourceType.Polymer, new ResourceData(ResourceType.Polymer, _config.PolymerStartAmount));
             Resources.Add(ResourceType.NanoGel, new ResourceData(ResourceType.NanoGel, _config.NanoGelStartAmount));
+            Resources.Add(ResourceType.Credit, new ResourceData(ResourceType.Credit, _config.CreditStartAmount));
         }
     }
 }
