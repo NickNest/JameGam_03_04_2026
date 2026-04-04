@@ -29,6 +29,10 @@ namespace _Project.Code.Scripts.Garden
 
         private void OnPointerDown(InputEventData inputData)
         {
+            if (inputData.Target != InputTarget.World) return;
+            
+            if (inputData.HitObject == null) return;
+            
             if (inputData.HitObject.TryGetComponent<GardenBedSlot>(out var gardenBedSlot))
             {
                 gardenBedSlot.OnClicked();

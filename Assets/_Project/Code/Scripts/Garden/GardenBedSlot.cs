@@ -34,13 +34,14 @@ namespace _Project.Code.Scripts.Garden
                         var resourceType = _plantInstance.Type.GetResourceType();
                         var productivityMultiplier = GameData.Instance.ProductionProductivityMultiplier;
                         GameData.Instance.AddResource(resourceType, GetDefaultProductivity(resourceType) * productivityMultiplier);
-                        Destroy(_plantInstance);
+                        Destroy(_plantInstance.gameObject);
+                        _isOccupied = false;
                     }
                 }
             }
             else
             {
-                Debug.Log($"GardenBedSlot with id {_id} has not been occupied");
+                OnPlantChosen(PlantType.Crystal);
             }
         }
 
@@ -49,6 +50,7 @@ namespace _Project.Code.Scripts.Garden
             var plant = _plantPrefabs.FirstOrDefault(plant => plant.Type == plantType);
             _plantInstance = Instantiate(plant, _plantParent);
             _plantInstance.Initialize(_config, _timer);
+            _isOccupied = true;
         }
         
         private int GetDefaultProductivity(ResourceType resourceType) => 
