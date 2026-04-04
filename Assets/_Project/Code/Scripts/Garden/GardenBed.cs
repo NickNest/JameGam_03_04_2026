@@ -1,6 +1,6 @@
-using System;
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.Timer;
+using _Project.Code.Scripts.UIService;
 using UnityEngine;
 
 namespace _Project.Code.Scripts.Garden
@@ -9,12 +9,14 @@ namespace _Project.Code.Scripts.Garden
     {
         [SerializeField] private GardenBedSlot[] _slots;
         
+        private IPanelShower _panelShower;
         private IInputResolver _inputResolver;
         private ITimerService _timerService;
         private GameConfig _gameConfig;
 
-        public void Initialize(GameConfig gameConfig, IInputResolver inputResolver, ITimerService timerService)
+        public void Initialize(IPanelShower panelShower, GameConfig gameConfig, IInputResolver inputResolver, ITimerService timerService)
         {
+            _panelShower = panelShower;
             _inputResolver = inputResolver;
             _gameConfig = gameConfig;
             _timerService = timerService;
@@ -23,7 +25,7 @@ namespace _Project.Code.Scripts.Garden
             
             foreach (var slot in _slots)
             {
-                slot.Initialize(_gameConfig, _timerService);
+                slot.Initialize(_panelShower, _gameConfig, _timerService);
             }
         }
 

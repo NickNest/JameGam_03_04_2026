@@ -2,6 +2,7 @@ using System.Linq;
 using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Timer;
+using _Project.Code.Scripts.UIService;
 using UnityEngine;
 
 namespace _Project.Code.Scripts.Garden
@@ -17,7 +18,10 @@ namespace _Project.Code.Scripts.Garden
         private Plant _plantInstance;
         private bool _isOccupied;
         
-        public void Initialize(GameConfig config, ITimerService timer)
+        public void Initialize(
+            IPanelShower panelShower,
+            GameConfig config, 
+            ITimerService timer)
         {
             _config = config;
             _timer = timer;
