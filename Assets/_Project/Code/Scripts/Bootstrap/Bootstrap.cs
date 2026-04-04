@@ -4,6 +4,7 @@ using _Project.Code.Scripts.Game;
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.UIService;
 using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.Garden;
 using _Project.Code.Scripts.TaskSystem;
 using _Project.Code.Scripts.Timer;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private TaskSystemView _taskSystemView;
         [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private TaskConfig _taskConfig;
+        [SerializeField] private GardenBed _gardenBed;
         private GameData _gameData;
         private ITimerService _timerService;
         private ITaskService _taskService;
@@ -44,6 +46,8 @@ namespace _Project.Code.Scripts.Bootstrap
             _gameData = new GameData(_gameConfig);
 
             _gameData.Initialize();
+            
+            _gardenBed.Initialize(_gameConfig, _inputResolver, _timerService);
         }
     }
 }

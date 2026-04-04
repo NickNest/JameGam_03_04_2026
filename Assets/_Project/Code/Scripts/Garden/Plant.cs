@@ -8,19 +8,19 @@ namespace _Project.Code.Scripts.Garden
     public class Plant: MonoBehaviour, IManualUpdate
     {
         private GameConfig _config;
-        private TimerService _timerService;
+        private ITimerService _timerService;
 
         private TimerHandle _timer;
         private bool _isOnHalfGrown;
 
         [SerializeField] private Sprite[] _sprites;
-        [SerializeField] private Image _image;
+        [SerializeField] private SpriteRenderer _image;
 
         public PlantType Type;
 
         public bool IsGrown { get; private set; }
 
-        public void Initialize(GameConfig config, TimerService timerService)
+        public void Initialize(GameConfig config, ITimerService timerService)
         {
             _timerService = timerService;
             _config = config;

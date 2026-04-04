@@ -9,5 +9,6 @@ namespace _Project.Code.Scripts.Timer
         void Resume(TimerHandle handle);
         void Cancel(TimerHandle handle);
         bool IsActive(TimerHandle handle);
+        float GetRemaining(TimerHandle handle);
     }
 }
