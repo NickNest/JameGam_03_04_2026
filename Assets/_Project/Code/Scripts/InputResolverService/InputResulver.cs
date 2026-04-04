@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using _Project.Code.Scripts.Game;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using _Project.Code.Scripts.GameController;
 
 namespace _Project.Code.Scripts.InputResolverService
 {

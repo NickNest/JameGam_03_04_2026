@@ -1,4 +1,4 @@
-namespace _Project.Code.Scripts.GameController
+namespace _Project.Code.Scripts.Game
 {
     public interface IManualUpdate
     {

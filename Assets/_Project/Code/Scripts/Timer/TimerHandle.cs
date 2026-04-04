@@ -1,6 +1,6 @@
 using System;
 
-namespace _Project.Code.Scripts.TimerService
+namespace _Project.Code.Scripts.Timer
 {
     public readonly struct TimerHandle : IEquatable<TimerHandle>
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using _Project.Code.Scripts.GameController;
+using _Project.Code.Scripts.Game;
 
-namespace _Project.Code.Scripts.TimerService
+namespace _Project.Code.Scripts.Timer
 {
     public class TimerService : ITimerService, IManualUpdate
     {
@@ -64,6 +64,18 @@ namespace _Project.Code.Scripts.TimerService
             }
         }
 
+        public float GetRemaining(TimerHandle handle)
+        {
+            for (int i = 0; i < _timers.Count; i++)
+            {
+                if (_timers[i].Id != handle.Id) continue;
+                var entry = _timers[i];
+                return entry.Remaining;
+            }
+            
+            return 0;
+        }
+        
         public bool IsActive(TimerHandle handle)
         {
             for (int i = 0; i < _timers.Count; i++)

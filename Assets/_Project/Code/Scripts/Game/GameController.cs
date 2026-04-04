@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+
 using UnityEngine;
 
-namespace _Project.Code.Scripts.GameController
+namespace _Project.Code.Scripts.Game
 {
     public class GameController : MonoBehaviour {
 

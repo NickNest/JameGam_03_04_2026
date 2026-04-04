@@ -9,5 +9,9 @@ namespace _Project.Code.Scripts
         public int CrystalStartAmount;
         public int PolymerStartAmount;
         public int NanoGelStartAmount;
+        
+        public int CrystalGrowthTime;
+        public int PolymerGrowthTime;
+        public int NanoGelGrowthTime;
     }
 }
