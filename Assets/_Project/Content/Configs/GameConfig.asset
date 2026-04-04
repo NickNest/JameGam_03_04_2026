@@ -16,3 +16,5 @@ MonoBehaviour:
   TaskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
   ResourceIconConfig: {fileID: 11400000, guid: 80b73a85603f19b4bbaf8cdc241165bf, type: 2}
   TaskIconConfig: {fileID: 11400000, guid: 189e5eb4cdb202747933663cf54f2f5c, type: 2}
+  EnemyConfig: {fileID: 11400000, guid: 76a5e7ab0d6dbd14da7d41f489c1facc, type: 2}
+  WaveConfig: {fileID: 11400000, guid: 4620a95ebacaa1d4fab73cfe6cb689fa, type: 2}

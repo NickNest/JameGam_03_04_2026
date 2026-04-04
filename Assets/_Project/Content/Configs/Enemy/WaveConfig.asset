@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.WaveConfig
   Waves:
   - WaveId: 1
-    StartTime: 0
-    ScoutCount: 5
-    GnawerCount: 5
-    TankCount: 5
+    StartTime: 20
+    ScoutCount: 2
+    GnawerCount: 0
+    TankCount: 0
     IntraSpawnInterval: 0.6
     Comment: 
   - WaveId: 2
