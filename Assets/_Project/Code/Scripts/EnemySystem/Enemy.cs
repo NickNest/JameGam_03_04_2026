@@ -154,15 +154,6 @@ namespace _Project.Code.Scripts.EnemySystem
             }
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (_targetBarricade == null && other.TryGetComponent(out Barricade barricade) && !barricade.IsDead)
-            {
-                _targetBarricade = barricade;
-                _attackTimer = 0f;
-            }
-        }
-
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_targetBarricade == null && other.TryGetComponent(out Barricade barricade) && !barricade.IsDead)

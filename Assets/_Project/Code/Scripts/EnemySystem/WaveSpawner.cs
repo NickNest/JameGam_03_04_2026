@@ -6,7 +6,8 @@ namespace _Project.Code.Scripts.EnemySystem
 {
     public class WaveSpawner : MonoBehaviour, IManualUpdate
     {
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private Transform _spawnPointA;
+        [SerializeField] private Transform _spawnPointB;
         [SerializeField] private CenterTarget _centerTarget;
         private EnemyConfig _enemyConfig;
         private WaveConfig _waveConfig;
@@ -95,9 +96,9 @@ namespace _Project.Code.Scripts.EnemySystem
         private void SpawnEnemy(EnemyType type)
         {
             var stats = _enemyConfig.GetStats(type);
-            var spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
+            var spawnPoint = Vector3.Lerp(_spawnPointA.position, _spawnPointB.position, Random.value);
 
-            var go = Instantiate(stats.Prefab, spawnPoint.position, Quaternion.identity, transform);
+            var go = Instantiate(stats.Prefab, spawnPoint, Quaternion.identity, transform);
             var enemy = go.GetComponent<Enemy>();
             enemy.Initialize(stats, _centerTarget);
             enemy.OnDied += HandleEnemyDied;
