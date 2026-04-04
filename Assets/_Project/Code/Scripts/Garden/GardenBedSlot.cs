@@ -44,7 +44,7 @@ namespace _Project.Code.Scripts.Garden
                     if (_plantInstance.IsGrown)
                     {
                         var resourceType = _plantInstance.Type.GetResourceType();
-                        var productivityMultiplier = GameData.Instance.ProductionProductivityMultiplier;
+                        var productivityMultiplier = GameData.Instance.ProduceMultiplier;
                         GameData.Instance.AddResource(resourceType, GetDefaultProductivity(resourceType) * productivityMultiplier);
                         Destroy(_plantInstance.gameObject);
                         _isOccupied = false;

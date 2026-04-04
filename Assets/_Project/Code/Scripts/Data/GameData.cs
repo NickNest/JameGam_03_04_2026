@@ -10,11 +10,15 @@ namespace _Project.Code.Scripts.Data
     {
         private readonly GameConfig _config;
 
+        public GameConfig GetConfig() => _config;
+        
         public static GameData Instance;
         public Dictionary<ResourceType, int> Resources { get; set; } = new ();
         public event Action OnResourcesChanged; 
         
-        public int ProductionProductivityMultiplier = 1;
+        public float GrowSpeedMultiplier;
+        public int ProduceMultiplier;
+        public float CraftingMultiplier;
         
         public Upgrades Upgrades = new();
 
@@ -30,6 +34,16 @@ namespace _Project.Code.Scripts.Data
             GenerateResourceData();
 
             GenerateStartPlantsStates();
+
+            GenerateMultipliers();
+        }
+
+        private void GenerateMultipliers()
+        {
+            var config = _config.UpgradesConfig;
+            GrowSpeedMultiplier = config.GrowMultipliers[0];
+            ProduceMultiplier = config.ProduceMultipliers[0];
+            CraftingMultiplier = config.CraftingSpeedMultipliers[0];
         }
 
         private void GenerateStartPlantsStates()

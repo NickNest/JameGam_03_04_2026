@@ -1,4 +1,5 @@
 using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Timer;
 using UnityEngine;
 
@@ -43,9 +44,10 @@ namespace _Project.Code.Scripts.Garden
             _image.sprite = _sprites[2];
         }
 
-        private int GetGrowthTime()
+        private float GetGrowthTime()
         {
-            return _config.GardenConfig.GetGrowableResourceData(Type.GetResourceType()).GrowthTime;
+            var multiplier = GameData.Instance.GrowSpeedMultiplier;
+            return _config.GardenConfig.GetGrowableResourceData(Type.GetResourceType()).GrowthTime / multiplier;
         }
     }
 }

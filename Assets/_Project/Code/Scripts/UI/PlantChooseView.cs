@@ -1,4 +1,5 @@
 using System;
+using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Garden;
 using TMPro;
@@ -21,12 +22,15 @@ namespace _Project.Code.Scripts.UI
             _button.onClick.RemoveAllListeners();
             _button.onClick.AddListener(() => action(plantType));
 
-            GameData.Instance.Upgrades.PlantUpgradesData.TryGetValue(plantType, out var upgradeData);
-            if (upgradeData != null)
-            {
-                _productivityText.text = $"Productivity \n {upgradeData.Productivity} p/s";
-                _growTimeText.text = $"Grow Time \n {upgradeData.GrowTime} sec";
-            }
+            var produceMultiplier = GameData.Instance.ProduceMultiplier;
+            var growSpeedMultiplier = GameData.Instance.GrowSpeedMultiplier;
+            var config = GameData.Instance.GetConfig();
+            var resourceData = config.GardenConfig.GetGrowableResourceData(plantType.GetResourceType());
+            var resultProduce = resourceData.DefaultProductivity * produceMultiplier;
+            var resultGrowTime = resourceData.GrowthTime / growSpeedMultiplier;
+            
+            _productivityText.text = $"Productivity \n {resultProduce} p/s";
+            _growTimeText.text = $"Grow Time \n {resultGrowTime} sec";
         }
 
         public void OnDestroy()

@@ -13,5 +13,6 @@ namespace _Project.Code.Scripts
         public TaskIconConfig TaskIconConfig;
         public EnemyConfig EnemyConfig;
         public WaveConfig WaveConfig;
+        public UpgradesConfig UpgradesConfig;
     }
 }
