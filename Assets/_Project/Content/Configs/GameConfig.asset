@@ -16,3 +16,4 @@ MonoBehaviour:
   CrystalStartAmount: 10
   PolymerStartAmount: 10
   NanoGelStartAmount: 10
+  TaskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}

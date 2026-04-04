@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using _Project.Code.Scripts.Configs;
+using UnityEngine;
 
 namespace _Project.Code.Scripts
 {
@@ -9,5 +11,7 @@ namespace _Project.Code.Scripts
         public int CrystalStartAmount;
         public int PolymerStartAmount;
         public int NanoGelStartAmount;
+
+        public TaskConfig TaskConfig;
     }
 }
