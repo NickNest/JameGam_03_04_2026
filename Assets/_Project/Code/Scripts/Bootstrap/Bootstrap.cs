@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Project.Code.Scripts.Data;
+using _Project.Code.Scripts.EnemySystem;
 using _Project.Code.Scripts.Game;
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.UIService;
@@ -22,6 +23,8 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private TaskConfig _taskConfig;
         [SerializeField] private GardenBed _gardenBed;
+        [SerializeField] private WaveSpawner _waveSpawner;
+        [SerializeField] private PlayerClickDamage _playerClickDamage;
         private GameData _gameData;
         private ITimerService _timerService;
         private ITaskService _taskService;
@@ -32,7 +35,8 @@ namespace _Project.Code.Scripts.Bootstrap
             
             var manualUpdates = new List<IManualUpdate> {   _inputResolver, 
                                                             _timerService as IManualUpdate,
-                                                            _craftStantionView,};
+                                                            _craftStantionView,
+                                                            _waveSpawner,};
 
             //Input
             _inputResolver.ManualAwake();
@@ -44,6 +48,9 @@ namespace _Project.Code.Scripts.Bootstrap
             _craftStantionView.ManualAwake(_taskService, _gameConfig.ResourceIconConfig, _gameConfig.TaskIconConfig);
             //Garden
             _gardenBed.Initialize(_gameConfig, _inputResolver, _timerService);
+            //Enemies
+            _waveSpawner.ManualAwake();
+            _playerClickDamage.ManualAwake(_inputResolver);
             //Game
             _gameController.ManualAwake(manualUpdates);
         }

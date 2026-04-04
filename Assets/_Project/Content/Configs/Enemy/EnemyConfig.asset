@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb93f5bff00e6e41ba846cdac7ebae6, type: 3}
+  m_Name: EnemyConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.EnemyConfig
+  Enemies:
+  - Type: 0
+    HP: 18
+    Speed: 1.9
+    CenterDamage: 1
+    BarricadeDamage: 2
+    AttackInterval: 0.7
+    Prefab: {fileID: 3050943258560229838, guid: 319d92c3ec509b4448075ac24539b6e9, type: 3}
+  - Type: 1
+    HP: 40
+    Speed: 1.3
+    CenterDamage: 2
+    BarricadeDamage: 4
+    AttackInterval: 0.9
+    Prefab: {fileID: 7639038669695859728, guid: 52902296da3e07a46a84085a457cf648, type: 3}
+  - Type: 2
+    HP: 95
+    Speed: 0.8
+    CenterDamage: 5
+    BarricadeDamage: 10
+    AttackInterval: 1.1
+    Prefab: {fileID: 3810193191233405577, guid: d15e88282f1cc314e815543bdb43631d, type: 3}

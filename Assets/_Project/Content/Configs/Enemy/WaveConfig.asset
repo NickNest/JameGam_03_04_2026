@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b4477b2540c9c4db7f1442091126c1, type: 3}
+  m_Name: WaveConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.WaveConfig
+  Waves:
+  - WaveId: 1
+    StartTime: 20
+    ScoutCount: 2
+    GnawerCount: 0
+    TankCount: 0
+    IntraSpawnInterval: 0.6
+    Comment: 
+  - WaveId: 2
+    StartTime: 40
+    ScoutCount: 3
+    GnawerCount: 0
+    TankCount: 0
+    IntraSpawnInterval: 0.5
+    Comment: 
+  - WaveId: 3
+    StartTime: 60
+    ScoutCount: 2
+    GnawerCount: 1
+    TankCount: 0
+    IntraSpawnInterval: 0.5
+    Comment: 
+  - WaveId: 4
+    StartTime: 80
+    ScoutCount: 4
+    GnawerCount: 0
+    TankCount: 0
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 5
+    StartTime: 98
+    ScoutCount: 3
+    GnawerCount: 1
+    TankCount: 0
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 6
+    StartTime: 118
+    ScoutCount: 2
+    GnawerCount: 2
+    TankCount: 0
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 7
+    StartTime: 140
+    ScoutCount: 5
+    GnawerCount: 0
+    TankCount: 0
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 8
+    StartTime: 158
+    ScoutCount: 3
+    GnawerCount: 2
+    TankCount: 0
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 9
+    StartTime: 180
+    ScoutCount: 2
+    GnawerCount: 3
+    TankCount: 0
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 10
+    StartTime: 200
+    ScoutCount: 4
+    GnawerCount: 2
+    TankCount: 0
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 11
+    StartTime: 220
+    ScoutCount: 2
+    GnawerCount: 3
+    TankCount: 0
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 12
+    StartTime: 240
+    ScoutCount: 3
+    GnawerCount: 2
+    TankCount: 1
+    IntraSpawnInterval: 0.45
+    Comment: "\u041F\u0435\u0440\u0432\u044B\u0439 \u0442\u0430\u043D\u043A"
+  - WaveId: 13
+    StartTime: 265
+    ScoutCount: 0
+    GnawerCount: 4
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 14
+    StartTime: 283
+    ScoutCount: 5
+    GnawerCount: 2
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 15
+    StartTime: 305
+    ScoutCount: 2
+    GnawerCount: 3
+    TankCount: 1
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 16
+    StartTime: 330
+    ScoutCount: 6
+    GnawerCount: 0
+    TankCount: 1
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 17
+    StartTime: 350
+    ScoutCount: 4
+    GnawerCount: 3
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 18
+    StartTime: 370
+    ScoutCount: 2
+    GnawerCount: 4
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 19
+    StartTime: 390
+    ScoutCount: 5
+    GnawerCount: 3
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 20
+    StartTime: 408
+    ScoutCount: 3
+    GnawerCount: 3
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 21
+    StartTime: 428
+    ScoutCount: 6
+    GnawerCount: 2
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 22
+    StartTime: 446
+    ScoutCount: 2
+    GnawerCount: 4
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 23
+    StartTime: 468
+    ScoutCount: 3
+    GnawerCount: 2
+    TankCount: 2
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 24
+    StartTime: 493
+    ScoutCount: 8
+    GnawerCount: 0
+    TankCount: 0
+    IntraSpawnInterval: 0.3
+    Comment: 
+  - WaveId: 25
+    StartTime: 508
+    ScoutCount: 4
+    GnawerCount: 4
+    TankCount: 0
+    IntraSpawnInterval: 0.35
+    Comment: 
+  - WaveId: 26
+    StartTime: 526
+    ScoutCount: 2
+    GnawerCount: 5
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 27
+    StartTime: 546
+    ScoutCount: 5
+    GnawerCount: 2
+    TankCount: 2
+    IntraSpawnInterval: 0.45
+    Comment: 
+  - WaveId: 28
+    StartTime: 568
+    ScoutCount: 3
+    GnawerCount: 5
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: 
+  - WaveId: 29
+    StartTime: 586
+    ScoutCount: 6
+    GnawerCount: 3
+    TankCount: 1
+    IntraSpawnInterval: 0.4
+    Comment: "\u0424\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F \u0432\u043E\u043B\u043D\u0430"

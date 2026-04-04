@@ -1,4 +1,5 @@
 ﻿using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.EnemySystem;
 using UnityEngine;
 
 namespace _Project.Code.Scripts
@@ -10,5 +11,7 @@ namespace _Project.Code.Scripts
         public TaskConfig TaskConfig;
         public ResourceIconConfig ResourceIconConfig;
         public TaskIconConfig TaskIconConfig;
+        public EnemyConfig EnemyConfig;
+        public WaveConfig WaveConfig;
     }
 }
