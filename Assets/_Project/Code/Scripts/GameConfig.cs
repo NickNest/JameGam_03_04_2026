@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using _Project.Code.Scripts.Configs;
+﻿using _Project.Code.Scripts.Configs;
 using UnityEngine;
 
 namespace _Project.Code.Scripts
