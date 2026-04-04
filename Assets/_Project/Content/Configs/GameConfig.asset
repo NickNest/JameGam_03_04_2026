@@ -15,3 +15,4 @@ MonoBehaviour:
   GardenConfig: {fileID: 11400000, guid: 16d673240a880a4428a022b97e61db2f, type: 2}
   TaskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
   ResourceIconConfig: {fileID: 11400000, guid: 80b73a85603f19b4bbaf8cdc241165bf, type: 2}
+  TaskIconConfig: {fileID: 11400000, guid: 189e5eb4cdb202747933663cf54f2f5c, type: 2}

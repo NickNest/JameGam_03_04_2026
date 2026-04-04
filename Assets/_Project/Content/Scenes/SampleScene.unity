@@ -1060,9 +1060,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.8666667, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.6156863}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1268,7 +1268,6 @@ MonoBehaviour:
   _taskSystemView: {fileID: 1470315914}
   _craftStantionView: {fileID: 846326912}
   _gameConfig: {fileID: 11400000, guid: a200154b4fa9ce941b193b5923158e60, type: 2}
-  _taskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
 --- !u!4 &835447615
 Transform:
   m_ObjectHideFlags: 0
@@ -1332,9 +1331,10 @@ MonoBehaviour:
   _resourceSlotPrefab: {fileID: 4176201851905791836, guid: fa6202dd928862940b868581f64d7952, type: 3}
   _resourceSlotsContainer: {fileID: 714205973}
   _craftButton: {fileID: 691470191}
+  _taskIcon: {fileID: 1265910414}
   _animRectTransform: {fileID: 632918050}
   _shakeDuration: 1
-  _shakeStrength: 0.2
+  _shakeStrength: 0.1
 --- !u!1 &1265910412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.TaskSystem.TaskSystemView
   _titleText: {fileID: 501437730}
   _iconImage: {fileID: 521691452}
-  _iconConfig: {fileID: 11400000, guid: 189e5eb4cdb202747933663cf54f2f5c, type: 2}
 --- !u!1 &1802809088
 GameObject:
   m_ObjectHideFlags: 0

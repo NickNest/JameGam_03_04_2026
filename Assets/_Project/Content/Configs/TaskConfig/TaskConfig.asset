@@ -19,3 +19,9 @@ MonoBehaviour:
       CrystalCost: 6
       PolymerCost: 3
       NanoGelCost: 1
+  - ResultType: 2
+    CreditReward: 15
+    CostInfo:
+      CrystalCost: 3
+      PolymerCost: 3
+      NanoGelCost: 3

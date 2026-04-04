@@ -15,14 +15,14 @@ MonoBehaviour:
   CreditStartAmount: 10
   GrowableResources:
   - ResourceType: 1
-    StartAmount: 5
+    StartAmount: 15
     GrowthTime: 5
     DefaultProductionProductivity: 5
   - ResourceType: 2
-    StartAmount: 5
+    StartAmount: 15
     GrowthTime: 5
     DefaultProductionProductivity: 5
   - ResourceType: 3
-    StartAmount: 5
+    StartAmount: 15
     GrowthTime: 5
     DefaultProductionProductivity: 5
