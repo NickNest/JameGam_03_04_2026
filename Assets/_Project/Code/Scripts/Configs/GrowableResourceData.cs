@@ -10,6 +10,6 @@ namespace _Project.Code.Scripts.Configs
         public ResourceType ResourceType;
         public int StartAmount;
         public int GrowthTime;
-        public int DefaultProductionProductivity;
+        [FormerlySerializedAs("DefaultProductionProductivity")] public int DefaultProductivity;
     }
 }
