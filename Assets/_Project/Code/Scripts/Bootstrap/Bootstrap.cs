@@ -10,6 +10,7 @@ using _Project.Code.Scripts.TaskSystem;
 using _Project.Code.Scripts.Timer;
 using _Project.Code.Scripts.CameraController;
 using _Project.Code.Scripts.CraftSystem;
+using _Project.Code.Scripts.UI;
 using UnityEngine;
 
 namespace _Project.Code.Scripts.Bootstrap
@@ -27,6 +28,7 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private WaveSpawner _waveSpawner;
         [SerializeField] private PlayerClickDamage _playerClickDamage;
         [SerializeField] private CameraEdgeScroll _cameraEdgeScroll;
+        [SerializeField] private List<StoredResourceView> _storedResources;
         private GameData _gameData;
         private ITimerService _timerService;
         private ITaskService _taskService;
@@ -45,6 +47,7 @@ namespace _Project.Code.Scripts.Bootstrap
             _cameraEdgeScroll.Initialize(_inputResolver);
             //UI
             _uiManager.Initialize(_inputResolver);
+            foreach (var storedResource in _storedResources) storedResource.Initialize();
             //Task and Craft
             _taskService = new TaskService(_gameConfig.TaskConfig.Tasks);
             _taskSystemView.ManualAwake(_taskService, _gameConfig.TaskIconConfig);

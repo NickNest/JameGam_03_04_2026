@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Garden;
+using UnityEngine;
 
 namespace _Project.Code.Scripts.Data
 {
@@ -10,6 +12,8 @@ namespace _Project.Code.Scripts.Data
 
         public static GameData Instance;
         public Dictionary<ResourceType, int> Resources { get; set; } = new ();
+        public event Action OnResourcesChanged; 
+        
         public int ProductionProductivityMultiplier = 1;
         
         public Upgrades Upgrades = new();
@@ -48,6 +52,7 @@ namespace _Project.Code.Scripts.Data
         public void AddResource(ResourceType resourceType, int amount)
         {
             Resources[resourceType] += amount;
+            OnResourcesChanged?.Invoke();
         }
 
         private void GenerateResourceData()
