@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffb623d69b0cb4b949f56116256e2c, type: 3}
   m_Name: PanelPrefabConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.UIService.PanelPrefabConfig
-  _panels:
-  - Type: 1
-    Prefab: {fileID: 3943505911413149936, guid: 22488a1c60b028a4baadfd2a2a0b5840, type: 3}
+  _panels: []

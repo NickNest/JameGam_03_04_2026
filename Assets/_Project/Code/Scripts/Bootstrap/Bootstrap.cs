@@ -47,7 +47,7 @@ namespace _Project.Code.Scripts.Bootstrap
             _taskSystemView.ManualAwake(_taskService, _gameConfig.TaskIconConfig);
             _craftStantionView.ManualAwake(_taskService, _gameConfig.ResourceIconConfig, _gameConfig.TaskIconConfig);
             //Garden
-            _gardenBed.Initialize(_gameConfig, _inputResolver, _timerService);
+            _gardenBed.Initialize(_uiManager, _gameConfig, _inputResolver, _timerService);
             //Enemies
             _waveSpawner.ManualAwake(_gameConfig.EnemyConfig, _gameConfig.WaveConfig);
             _playerClickDamage.ManualAwake(_inputResolver);

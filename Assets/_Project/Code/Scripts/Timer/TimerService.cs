@@ -12,20 +12,24 @@ namespace _Project.Code.Scripts.Timer
         private struct TimerEntry
         {
             public int Id;
+            public float StartTime;
             public float Remaining;
             public bool Paused;
             public Action OnComplete;
+            public Action OnHalfTime;
         }
 
-        public TimerHandle Start(float duration, Action onComplete)
+        public TimerHandle Start(float duration, Action onComplete, Action onHalfTime = null)
         {
             var id = _nextId++;
             _timers.Add(new TimerEntry
             {
                 Id = id,
+                StartTime = duration,
                 Remaining = duration,
                 Paused = false,
-                OnComplete = onComplete
+                OnComplete = onComplete,
+                OnHalfTime = onHalfTime
             });
             return new TimerHandle(id);
         }
@@ -64,18 +68,6 @@ namespace _Project.Code.Scripts.Timer
             }
         }
 
-        public float GetRemaining(TimerHandle handle)
-        {
-            for (int i = 0; i < _timers.Count; i++)
-            {
-                if (_timers[i].Id != handle.Id) continue;
-                var entry = _timers[i];
-                return entry.Remaining;
-            }
-            
-            return 0;
-        }
-        
         public bool IsActive(TimerHandle handle)
         {
             for (int i = 0; i < _timers.Count; i++)
@@ -103,6 +95,11 @@ namespace _Project.Code.Scripts.Timer
                 else
                 {
                     _timers[i] = entry;
+                }
+                
+                if (entry.Remaining <= entry.StartTime / 2f)
+                {
+                    entry.OnHalfTime?.Invoke();
                 }
             }
         }

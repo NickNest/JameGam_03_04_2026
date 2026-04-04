@@ -1,11 +1,10 @@
 using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Timer;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _Project.Code.Scripts.Garden
 {
-    public class Plant: MonoBehaviour, IManualUpdate
+    public class Plant: MonoBehaviour
     {
         private GameConfig _config;
         private ITimerService _timerService;
@@ -27,25 +26,17 @@ namespace _Project.Code.Scripts.Garden
 
             _image.sprite = _sprites[0];
 
-            _timer = _timerService.Start(GetGrowthTime(), OnGrown);
+            _timer = _timerService.Start(GetGrowthTime(), OnGrown, OnHalfGrown);
         }
 
-        public void ManualUpdate(float deltaTime)
+        private void OnHalfGrown()
         {
-            if (_isOnHalfGrown)
-            {
-                return;
-            }
+            if (_isOnHalfGrown) return;
             
-            var timeRemaining = _timerService.GetRemaining(_timer);
-            var castedTimeRemaining = timeRemaining / 2;
-            if (timeRemaining >= castedTimeRemaining)
-            {
-                _isOnHalfGrown = true;
-                _image.sprite = _sprites[1];
-            }
+            _isOnHalfGrown = true;
+            _image.sprite = _sprites[1];
         }
-
+        
         private void OnGrown()
         {
             IsGrown = true;
