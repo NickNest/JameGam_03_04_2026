@@ -5,7 +5,8 @@ namespace _Project.Code.Scripts.Data
     public class GameData
     {
         private readonly GameConfig _config;
-        
+
+        public static GameData Instance;
         public Dictionary<ResourceType, ResourceData> Resources { get; set; } = new ();
 
         public GameData(GameConfig config)
@@ -15,6 +16,8 @@ namespace _Project.Code.Scripts.Data
         
         public void Initialize()
         {
+            Instance = this;
+            
             GenerateResourceData();
         }
 
