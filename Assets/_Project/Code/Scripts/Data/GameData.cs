@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Project.Code.Scripts.Configs;
 
 namespace _Project.Code.Scripts.Data
 {
@@ -7,7 +8,8 @@ namespace _Project.Code.Scripts.Data
         private readonly GameConfig _config;
 
         public static GameData Instance;
-        public Dictionary<ResourceType, ResourceData> Resources { get; set; } = new ();
+        public Dictionary<ResourceType, int> Resources { get; set; } = new ();
+        public int ProductionProductivityMultiplier = 1;
 
         public GameData(GameConfig config)
         {
@@ -21,12 +23,20 @@ namespace _Project.Code.Scripts.Data
             GenerateResourceData();
         }
 
+        public void AddResource(ResourceType resourceType, int amount)
+        {
+            Resources[resourceType] += amount;
+        }
+
         private void GenerateResourceData()
         {
-            Resources.Add(ResourceType.Crystal, new ResourceData(ResourceType.Crystal, _config.CrystalStartAmount));
-            Resources.Add(ResourceType.Polymer, new ResourceData(ResourceType.Polymer, _config.PolymerStartAmount));
-            Resources.Add(ResourceType.NanoGel, new ResourceData(ResourceType.NanoGel, _config.NanoGelStartAmount));
-            Resources.Add(ResourceType.Credit, new ResourceData(ResourceType.Credit, _config.CreditStartAmount));
+            Resources.Add(ResourceType.Crystal, GetResourceStartAmount(ResourceType.Crystal));
+            Resources.Add(ResourceType.Polymer, GetResourceStartAmount(ResourceType.Polymer));
+            Resources.Add(ResourceType.NanoGel, GetResourceStartAmount(ResourceType.NanoGel));
+            Resources.Add(ResourceType.Credit, _config.GardenConfig.CreditStartAmount);
         }
+
+        private int GetResourceStartAmount(ResourceType resourceType) => 
+            _config.GardenConfig.GetGrowableResourceData(resourceType).StartAmount;
     }
 }
