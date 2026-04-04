@@ -3,6 +3,8 @@ using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Game;
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.UIService;
+using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.TaskSystem;
 using _Project.Code.Scripts.Timer;
 using UnityEngine;
 
@@ -13,9 +15,12 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private InputResolver _inputResolver;
         [SerializeField] private UIController _uiManager;
         [SerializeField] private GameController _gameController;
+        [SerializeField] private TaskSystemView _taskSystemView;
         [SerializeField] private GameConfig _gameConfig;
+        [SerializeField] private TaskConfig _taskConfig;
         private GameData _gameData;
         private ITimerService _timerService;
+        private ITaskService _taskService;
 
         private void Awake() {
             InitConfig();
@@ -26,6 +31,8 @@ namespace _Project.Code.Scripts.Bootstrap
 
             _inputResolver.ManualAwake();
             _uiManager.Initialize(_inputResolver);
+            _taskService = new TaskService(_taskConfig.Tasks);
+            _taskSystemView.Initialize(_taskService);
             _gameController.ManualAwake(manualUpdates);
         }
 
