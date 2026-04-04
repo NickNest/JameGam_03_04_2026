@@ -1,3 +1,4 @@
+using System.Linq;
 using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Timer;
@@ -9,13 +10,14 @@ namespace _Project.Code.Scripts.Garden
     {
         [SerializeField] private int _id;
         [SerializeField] private Transform _plantParent;
-
+        [SerializeField] private Plant[] _plantPrefabs;
+        
         private GameConfig _config;
-        private TimerService _timer;
+        private ITimerService _timer;
         private Plant _plantInstance;
         private bool _isOccupied;
         
-        public void Initialize(GameConfig config, TimerService timer)
+        public void Initialize(GameConfig config, ITimerService timer)
         {
             _config = config;
             _timer = timer;
@@ -32,14 +34,24 @@ namespace _Project.Code.Scripts.Garden
                         var resourceType = _plantInstance.Type.GetResourceType();
                         var productivityMultiplier = GameData.Instance.ProductionProductivityMultiplier;
                         GameData.Instance.AddResource(resourceType, GetDefaultProductivity(resourceType) * productivityMultiplier);
+                        Destroy(_plantInstance);
                     }
                 }
             }
+            else
+            {
+                Debug.Log($"GardenBedSlot with id {_id} has not been occupied");
+            }
         }
 
-        public int GetDefaultProductivity(ResourceType resourceType)
+        private void OnPlantChosen(PlantType plantType)
         {
-            return _config.GardenConfig.GetGrowableResourceData(resourceType).DefaultProductionProductivity;
+            var plant = _plantPrefabs.FirstOrDefault(plant => plant.Type == plantType);
+            _plantInstance = Instantiate(plant, _plantParent);
+            _plantInstance.Initialize(_config, _timer);
         }
+        
+        private int GetDefaultProductivity(ResourceType resourceType) => 
+            _config.GardenConfig.GetGrowableResourceData(resourceType).DefaultProductionProductivity;
     }
 }

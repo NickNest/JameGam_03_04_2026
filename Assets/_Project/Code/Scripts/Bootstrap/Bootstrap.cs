@@ -3,6 +3,8 @@ using _Project.Code.Scripts.Data;
 using _Project.Code.Scripts.Game;
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.UIService;
+using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.Garden;
 using _Project.Code.Scripts.TaskSystem;
 using _Project.Code.Scripts.Timer;
 using _Project.Code.Scripts.CraftSystem;
@@ -18,6 +20,8 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private TaskSystemView _taskSystemView;
         [SerializeField] private CraftStantionView _craftStantionView;
         [SerializeField] private GameConfig _gameConfig;
+        [SerializeField] private TaskConfig _taskConfig;
+        [SerializeField] private GardenBed _gardenBed;
         private GameData _gameData;
         private ITimerService _timerService;
         private ITaskService _taskService;
@@ -30,11 +34,17 @@ namespace _Project.Code.Scripts.Bootstrap
                                                             _timerService as IManualUpdate,
                                                             _craftStantionView,};
 
+            //Input
             _inputResolver.ManualAwake();
+            //UI
             _uiManager.Initialize(_inputResolver);
+            //Task and Craft
             _taskService = new TaskService(_gameConfig.TaskConfig.Tasks);
             _taskSystemView.ManualAwake(_taskService, _gameConfig.TaskIconConfig);
             _craftStantionView.ManualAwake(_taskService, _gameConfig.ResourceIconConfig, _gameConfig.TaskIconConfig);
+            //Garden
+            _gardenBed.Initialize(_gameConfig, _inputResolver, _timerService);
+            //Game
             _gameController.ManualAwake(manualUpdates);
         }
 
