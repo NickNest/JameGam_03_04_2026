@@ -40,6 +40,7 @@ namespace _Project.Code.Scripts.EnemySystem
             _targetBarricade = null;
 
             _attackPosition = ComputeAttackPosition(centerTarget);
+            SetRotationTowards(_attackPosition);
         }
 
         private Vector3 ComputeAttackPosition(CenterTarget centerTarget)
@@ -61,6 +62,13 @@ namespace _Project.Code.Scripts.EnemySystem
 
             Vector3 fallbackDir = (transform.position - centerTarget.transform.position).normalized;
             return centerTarget.transform.position + fallbackDir * centerTarget.AttackRange;
+        }
+
+        private void SetRotationTowards(Vector3 attackPosition)
+        {
+            Vector3 dir = attackPosition - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
 
         public void Tick(float deltaTime)

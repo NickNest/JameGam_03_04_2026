@@ -8,6 +8,7 @@ using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Garden;
 using _Project.Code.Scripts.TaskSystem;
 using _Project.Code.Scripts.Timer;
+using _Project.Code.Scripts.CameraController;
 using _Project.Code.Scripts.CraftSystem;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private GardenBed _gardenBed;
         [SerializeField] private WaveSpawner _waveSpawner;
         [SerializeField] private PlayerClickDamage _playerClickDamage;
+        [SerializeField] private CameraEdgeScroll _cameraEdgeScroll;
         private GameData _gameData;
         private ITimerService _timerService;
         private ITaskService _taskService;
@@ -40,6 +42,7 @@ namespace _Project.Code.Scripts.Bootstrap
 
             //Input
             _inputResolver.ManualAwake();
+            _cameraEdgeScroll.Initialize(_inputResolver);
             //UI
             _uiManager.Initialize(_inputResolver);
             //Task and Craft

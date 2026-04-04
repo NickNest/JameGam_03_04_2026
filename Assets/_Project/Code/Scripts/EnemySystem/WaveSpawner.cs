@@ -96,7 +96,8 @@ namespace _Project.Code.Scripts.EnemySystem
         {
             var stats = _enemyConfig.GetStats(type);
             var spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
-            var go = Instantiate(stats.Prefab, spawnPoint.position, Quaternion.identity);
+
+            var go = Instantiate(stats.Prefab, spawnPoint.position, Quaternion.identity, transform);
             var enemy = go.GetComponent<Enemy>();
             enemy.Initialize(stats, _centerTarget);
             enemy.OnDied += HandleEnemyDied;

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2705045049369389533}
   - component: {fileID: 5040387063702626153}
-  - component: {fileID: 1137989652764742295}
   - component: {fileID: -4600600962103834079}
+  - component: {fileID: 910827953856311151}
   m_Layer: 0
   m_Name: PREF_HardEnemy
   m_TagString: Untagged
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9339623, g: 0, b: 0.026095161, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2d3fba0a45f296e43a39b0a92336a8aa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,8 +92,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1137989652764742295
-CircleCollider2D:
+--- !u!114 &-4600600962103834079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810193191233405577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58c187f82f1224492930a479e84dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.Enemy
+--- !u!70 &910827953856311151
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,17 +138,6 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &-4600600962103834079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3810193191233405577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c58c187f82f1224492930a479e84dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.Enemy
+  m_Offset: {x: 0.03, y: 0}
+  m_Size: {x: 0.76, y: 1.25}
+  m_Direction: 0
