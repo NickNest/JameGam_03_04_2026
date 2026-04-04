@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using _Project.Code.Scripts.Data;
 
 namespace _Project.Code.Scripts.Garden
@@ -20,6 +19,8 @@ namespace _Project.Code.Scripts.Garden
                 PlantType.Crystal => ResourceType.Crystal,
                 PlantType.NanoGel => ResourceType.NanoGel,
                 PlantType.Polymer => ResourceType.Polymer,
+                PlantType.NuN => throw new System.NotImplementedException(),
+                _ => throw new System.NotImplementedException(),
             };
         }
     }

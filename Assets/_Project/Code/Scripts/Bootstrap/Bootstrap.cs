@@ -12,6 +12,7 @@ using _Project.Code.Scripts.CameraController;
 using _Project.Code.Scripts.CraftSystem;
 using _Project.Code.Scripts.UI;
 using UnityEngine;
+using _Project.Code.Scripts.BattleField;
 
 namespace _Project.Code.Scripts.Bootstrap
 {
@@ -28,6 +29,9 @@ namespace _Project.Code.Scripts.Bootstrap
         [SerializeField] private WaveSpawner _waveSpawner;
         [SerializeField] private PlayerClickDamage _playerClickDamage;
         [SerializeField] private CameraEdgeScroll _cameraEdgeScroll;
+        [SerializeField] private FieldSystem _fieldSystem;
+        [SerializeField] private DefenseDragController _defenseDragController;
+        [SerializeField] private DefenseShopView _defenseShopView;
         [SerializeField] private List<StoredResourceView> _storedResources;
         private GameData _gameData;
         private ITimerService _timerService;
@@ -54,6 +58,11 @@ namespace _Project.Code.Scripts.Bootstrap
             _craftStantionView.ManualAwake(_taskService, _gameConfig.ResourceIconConfig, _gameConfig.TaskIconConfig);
             //Garden
             _gardenBed.Initialize(_uiManager, _gameConfig, _inputResolver, _timerService);
+            //Field
+            _fieldSystem.Initialize(_gameConfig.FieldConfig);
+            //Defense Shop
+            _defenseShopView.Initialize(_gameConfig.DefenseShopConfig);
+            _defenseDragController.Initialize(_inputResolver, _fieldSystem, _gameConfig.DefenseShopConfig);
             //Enemies
             _waveSpawner.ManualAwake(_gameConfig.EnemyConfig, _gameConfig.WaveConfig);
             _playerClickDamage.ManualAwake(_inputResolver);

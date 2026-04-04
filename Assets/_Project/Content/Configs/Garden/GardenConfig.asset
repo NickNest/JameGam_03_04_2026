@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c1c7569eeb47d08c011025a2efd51b, type: 3}
   m_Name: GardenConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Configs.GardenConfig
-  CreditStartAmount: 10
+  CreditStartAmount: 1000
   GrowableResources:
   - ResourceType: 1
     StartAmount: 15
     GrowthTime: 5
-    DefaultProductionProductivity: 5
+    DefaultProductivity: 5
   - ResourceType: 2
     StartAmount: 15
     GrowthTime: 5
-    DefaultProductionProductivity: 5
+    DefaultProductivity: 5
   - ResourceType: 3
     StartAmount: 15
     GrowthTime: 5
-    DefaultProductionProductivity: 5
+    DefaultProductivity: 5

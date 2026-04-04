@@ -18,3 +18,5 @@ MonoBehaviour:
   TaskIconConfig: {fileID: 11400000, guid: 189e5eb4cdb202747933663cf54f2f5c, type: 2}
   EnemyConfig: {fileID: 11400000, guid: 76a5e7ab0d6dbd14da7d41f489c1facc, type: 2}
   WaveConfig: {fileID: 11400000, guid: 4620a95ebacaa1d4fab73cfe6cb689fa, type: 2}
+  FieldConfig: {fileID: 11400000, guid: a52242f0e000dc641abf26ca1bbc15db, type: 2}
+  DefenseShopConfig: {fileID: 11400000, guid: 7b88cf58be917bc4eb08ed0445293ec3, type: 2}

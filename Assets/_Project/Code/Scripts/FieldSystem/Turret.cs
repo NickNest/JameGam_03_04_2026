@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-namespace _Project.Code.Scripts.EnemySystem
+namespace _Project.Code.Scripts.BattleField
 {
-    public class Barricade : MonoBehaviour
+    public class Turret : MonoBehaviour, IFieldPlaceable
     {
-        public event Action<Barricade> OnDestroyed;
+        public event Action<IFieldPlaceable> OnPlaceableDestroyed;
 
-        [SerializeField] private float _maxHp = 80f;
+        [SerializeField] private float _maxHp = 60f;
 
         private float _currentHp;
 
@@ -26,7 +26,7 @@ namespace _Project.Code.Scripts.EnemySystem
             if (_currentHp <= 0f)
             {
                 _currentHp = 0f;
-                OnDestroyed?.Invoke(this);
+                OnPlaceableDestroyed?.Invoke(this);
                 gameObject.SetActive(false);
             }
         }

@@ -1,4 +1,5 @@
-﻿using _Project.Code.Scripts.Configs;
+﻿using _Project.Code.Scripts.BattleField;
+using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.EnemySystem;
 using UnityEngine;
 
@@ -13,5 +14,7 @@ namespace _Project.Code.Scripts
         public TaskIconConfig TaskIconConfig;
         public EnemyConfig EnemyConfig;
         public WaveConfig WaveConfig;
+        public FieldConfig FieldConfig;
+        public DefenseShopConfig DefenseShopConfig;
     }
 }

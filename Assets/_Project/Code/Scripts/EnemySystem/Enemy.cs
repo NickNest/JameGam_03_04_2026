@@ -1,4 +1,5 @@
 using System;
+using _Project.Code.Scripts.BattleField;
 using UnityEngine;
 
 namespace _Project.Code.Scripts.EnemySystem
@@ -24,7 +25,7 @@ namespace _Project.Code.Scripts.EnemySystem
 
         private Vector3 _attackPosition;
         private CenterTarget _centerTarget;
-        private Barricade _targetBarricade;
+        private IFieldPlaceable _targetPlaceable;
         private bool _reachedCenter;
 
         public bool IsDead => _currentHp <= 0f;
@@ -39,7 +40,7 @@ namespace _Project.Code.Scripts.EnemySystem
             _centerTarget = centerTarget;
             _attackTimer = 0f;
             _reachedCenter = false;
-            _targetBarricade = null;
+            _targetPlaceable = null;
 
             _attackPosition = ComputeAttackPosition(centerTarget);
             SetRotationTowards(_attackPosition);
@@ -77,14 +78,14 @@ namespace _Project.Code.Scripts.EnemySystem
         {
             if (IsDead) return;
 
-            if (_targetBarricade != null && !_targetBarricade.IsDead)
+            if (_targetPlaceable != null && !_targetPlaceable.IsDead)
             {
-                AttackBarricade(deltaTime);
+                AttackPlaceable(deltaTime);
                 _animator.TickIdle(deltaTime);
                 return;
             }
 
-            _targetBarricade = null;
+            _targetPlaceable = null;
 
             if (_animator.IsLunging)
             {
@@ -130,14 +131,14 @@ namespace _Project.Code.Scripts.EnemySystem
             }
         }
 
-        private void AttackBarricade(float deltaTime)
+        private void AttackPlaceable(float deltaTime)
         {
             _attackTimer -= deltaTime;
             if (_attackTimer <= 0f)
             {
-                _targetBarricade.TakeDamage(_barricadeDamage);
+                _targetPlaceable.TakeDamage(_barricadeDamage);
                 _attackTimer = _attackInterval;
-                _animator.StartLunge(_targetBarricade.transform.position);
+                _animator.StartLunge(_targetPlaceable.transform.position);
             }
         }
 
@@ -156,9 +157,9 @@ namespace _Project.Code.Scripts.EnemySystem
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_targetBarricade == null && other.TryGetComponent(out Barricade barricade) && !barricade.IsDead)
+            if (_targetPlaceable == null && other.TryGetComponent(out IFieldPlaceable placeable) && !placeable.IsDead)
             {
-                _targetBarricade = barricade;
+                _targetPlaceable = placeable;
                 _attackTimer = 0f;
             }
         }
