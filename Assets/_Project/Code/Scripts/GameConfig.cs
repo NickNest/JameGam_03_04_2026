@@ -8,5 +8,7 @@ namespace _Project.Code.Scripts
     {
         public GardenConfig GardenConfig;
         public TaskConfig TaskConfig;
+        public ResourceIconConfig ResourceIconConfig;
+        public TaskIconConfig TaskIconConfig;
     }
 }

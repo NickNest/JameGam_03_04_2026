@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d76772a4b724ba9bc37e3803544fd94, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.GameConfig
-  CreditStartAmount: 10
-  CrystalStartAmount: 10
-  PolymerStartAmount: 10
-  NanoGelStartAmount: 10
+  GardenConfig: {fileID: 11400000, guid: 16d673240a880a4428a022b97e61db2f, type: 2}
   TaskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
+  ResourceIconConfig: {fileID: 11400000, guid: 80b73a85603f19b4bbaf8cdc241165bf, type: 2}

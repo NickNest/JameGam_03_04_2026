@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Configs.TaskConfig
   Tasks:
   - ResultType: 1
-    CreditReward: 1
+    CreditReward: 10
     CostInfo:
-      CrystalCost: 3
-      PolymerCost: 0
-      NanoGelCost: 0
+      CrystalCost: 6
+      PolymerCost: 3
+      NanoGelCost: 1
