@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Project.Code.Scripts.Configs;
+using _Project.Code.Scripts.Garden;
 
 namespace _Project.Code.Scripts.Data
 {
@@ -10,6 +11,8 @@ namespace _Project.Code.Scripts.Data
         public static GameData Instance;
         public Dictionary<ResourceType, int> Resources { get; set; } = new ();
         public int ProductionProductivityMultiplier = 1;
+        
+        public Upgrades Upgrades = new();
 
         public GameData(GameConfig config)
         {
@@ -21,6 +24,25 @@ namespace _Project.Code.Scripts.Data
             Instance = this;
             
             GenerateResourceData();
+
+            GenerateStartPlantsStates();
+        }
+
+        private void GenerateStartPlantsStates()
+        {
+            GeneratePlantUpgradesData(PlantType.Crystal);
+            GeneratePlantUpgradesData(PlantType.NanoGel);
+            GeneratePlantUpgradesData(PlantType.Polymer);
+        }
+
+        private void GeneratePlantUpgradesData(PlantType plantType)
+        {
+            var plantConfig = _config.GardenConfig.GetGrowableResourceData(plantType.GetResourceType());
+            Upgrades.PlantUpgradesData.Add(plantType, new PlantUpgradeData
+            {
+                Productivity = plantConfig.DefaultProductivity,
+                GrowTime = plantConfig.GrowthTime
+            });
         }
 
         public void AddResource(ResourceType resourceType, int amount)

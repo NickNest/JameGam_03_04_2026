@@ -1,5 +1,6 @@
 using _Project.Code.Scripts.InputResolverService;
 using _Project.Code.Scripts.Timer;
+using _Project.Code.Scripts.UI;
 using _Project.Code.Scripts.UIService;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace _Project.Code.Scripts.Garden
 {
     public class GardenBed: MonoBehaviour
     {
+        [SerializeField] private Transform _canvasParent;
         [SerializeField] private GardenBedSlot[] _slots;
         
         private IPanelShower _panelShower;
@@ -25,14 +27,29 @@ namespace _Project.Code.Scripts.Garden
             
             foreach (var slot in _slots)
             {
-                slot.Initialize(_panelShower, _gameConfig, _timerService);
+                slot.Initialize(_panelShower, _gameConfig, _timerService, _canvasParent);
             }
         }
 
         private void OnPointerDown(InputEventData inputData)
         {
-            if (inputData.Target != InputTarget.World) return;
+            if (inputData.Target == InputTarget.Canvas)
+            {
+                if (inputData.HitObject != null)
+                {
+                    if (!inputData.HitObject.TryGetComponent<PlantChooseView>(out var view))
+                    {
+                        _panelShower.HideView(PanelType.PlantPanelInfo);
+                    }
+                }
+            }
+            else
+            {
+                _panelShower.HideView(PanelType.PlantPanelInfo);
+            }
             
+            if (inputData.Target != InputTarget.World) return;
+
             if (inputData.HitObject == null) return;
             
             if (inputData.HitObject.TryGetComponent<GardenBedSlot>(out var gardenBedSlot))
