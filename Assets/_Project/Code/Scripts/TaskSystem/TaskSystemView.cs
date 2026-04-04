@@ -10,6 +10,7 @@ namespace _Project.Code.Scripts.TaskSystem
     {
         [SerializeField] private TMP_Text _titleText;
         [SerializeField] private Image _iconImage;
+        [SerializeField] private TMP_Text _rewardText;
         private TaskIconConfig _iconConfig;
 
         private ITaskService _taskService;
@@ -44,6 +45,9 @@ namespace _Project.Code.Scripts.TaskSystem
             var icon = _iconConfig.GetIcon(task.ResultType);
             _iconImage.sprite = icon;
             _iconImage.enabled = icon != null;
+
+            _rewardText.enabled = true;
+            _rewardText.text = task.CreditReward.ToString();
         }
 
         private void OnTaskCompleted(TaskData _)
@@ -58,6 +62,8 @@ namespace _Project.Code.Scripts.TaskSystem
             _titleText.enabled = false;
             _iconImage.sprite = null;
             _iconImage.enabled = false;
+            _rewardText.text = string.Empty;
+            _rewardText.enabled = false;
         }
     }
 }
