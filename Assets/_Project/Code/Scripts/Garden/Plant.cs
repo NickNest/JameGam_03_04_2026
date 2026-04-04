@@ -1,3 +1,4 @@
+using _Project.Code.Scripts.Configs;
 using _Project.Code.Scripts.Timer;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,21 +20,14 @@ namespace _Project.Code.Scripts.Garden
 
         public bool IsGrown { get; private set; }
 
-
         public void Initialize(GameConfig config, TimerService timerService)
         {
             _timerService = timerService;
             _config = config;
 
             _image.sprite = _sprites[0];
-            
-            _timer = Type switch
-            {
-                PlantType.Crystal => _timerService.Start(_config.CrystalGrowthTime, OnGrown),
-                PlantType.NanoGel => _timerService.Start(_config.NanoGelGrowthTime, OnGrown),
-                PlantType.Polymer => _timerService.Start(_config.PolymerGrowthTime, OnGrown),
-                _ => _timer
-            };
+
+            _timer = _timerService.Start(GetGrowthTime(), OnGrown);
         }
 
         public void ManualUpdate(float deltaTime)
@@ -56,6 +50,11 @@ namespace _Project.Code.Scripts.Garden
         {
             IsGrown = true;
             _image.sprite = _sprites[2];
+        }
+
+        private int GetGrowthTime()
+        {
+            return _config.GardenConfig.GetGrowableResourceData(Type.GetResourceType()).GrowthTime;
         }
     }
 }
