@@ -6,10 +6,10 @@ namespace _Project.Code.Scripts.EnemySystem
 {
     public class WaveSpawner : MonoBehaviour, IManualUpdate
     {
-        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private CenterTarget _centerTarget;
-        [SerializeField] private EnemyConfig _enemyConfig;
-        [SerializeField] private WaveConfig _waveConfig;
+        private EnemyConfig _enemyConfig;
+        private WaveConfig _waveConfig;
 
         private float _gameTime;
         private int _currentWaveIndex;
@@ -20,7 +20,11 @@ namespace _Project.Code.Scripts.EnemySystem
         private float _intraSpawnTimer;
         private float _currentIntraSpawnInterval;
 
-        public void ManualAwake() { }
+        public void ManualAwake(EnemyConfig enemyConfig, WaveConfig waveConfig)
+        {
+            _enemyConfig = enemyConfig;
+            _waveConfig = waveConfig;
+        }
 
         public void ManualUpdate(float deltaTime)
         {
@@ -45,12 +49,23 @@ namespace _Project.Code.Scripts.EnemySystem
         {
             _spawnQueue.Clear();
 
+            var list = new List<EnemyType>(wave.ScoutCount + wave.GnawerCount + wave.TankCount);
+
             for (int i = 0; i < wave.ScoutCount; i++)
-                _spawnQueue.Enqueue(EnemyType.Scout);
+                list.Add(EnemyType.Scout);
             for (int i = 0; i < wave.GnawerCount; i++)
-                _spawnQueue.Enqueue(EnemyType.Gnawer);
+                list.Add(EnemyType.Gnawer);
             for (int i = 0; i < wave.TankCount; i++)
-                _spawnQueue.Enqueue(EnemyType.Tank);
+                list.Add(EnemyType.Tank);
+
+            for (int i = list.Count - 1; i > 0; i--)
+            {
+                int j = Random.Range(0, i + 1);
+                (list[i], list[j]) = (list[j], list[i]);
+            }
+
+            foreach (var type in list)
+                _spawnQueue.Enqueue(type);
 
             _currentIntraSpawnInterval = wave.IntraSpawnInterval;
             _intraSpawnTimer = 0f;
@@ -80,9 +95,10 @@ namespace _Project.Code.Scripts.EnemySystem
         private void SpawnEnemy(EnemyType type)
         {
             var stats = _enemyConfig.GetStats(type);
-            var go = Instantiate(stats.Prefab, _spawnPoint.position, Quaternion.identity);
+            var spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
+            var go = Instantiate(stats.Prefab, spawnPoint.position, Quaternion.identity);
             var enemy = go.GetComponent<Enemy>();
-            enemy.Initialize(stats, _centerTarget.transform, _centerTarget);
+            enemy.Initialize(stats, _centerTarget);
             enemy.OnDied += HandleEnemyDied;
             _activeEnemies.Add(enemy);
         }

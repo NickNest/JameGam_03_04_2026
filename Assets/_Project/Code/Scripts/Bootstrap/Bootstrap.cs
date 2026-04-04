@@ -49,7 +49,7 @@ namespace _Project.Code.Scripts.Bootstrap
             //Garden
             _gardenBed.Initialize(_gameConfig, _inputResolver, _timerService);
             //Enemies
-            _waveSpawner.ManualAwake();
+            _waveSpawner.ManualAwake(_gameConfig.EnemyConfig, _gameConfig.WaveConfig);
             _playerClickDamage.ManualAwake(_inputResolver);
             //Game
             _gameController.ManualAwake(manualUpdates);
