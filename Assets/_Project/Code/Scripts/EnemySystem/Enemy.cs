@@ -11,6 +11,8 @@ namespace _Project.Code.Scripts.EnemySystem
     /// </summary>
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] private EnemyAnimator _animator;
+
         public event Action<Enemy> OnDied;
 
         private float _currentHp;
@@ -78,14 +80,22 @@ namespace _Project.Code.Scripts.EnemySystem
             if (_targetBarricade != null && !_targetBarricade.IsDead)
             {
                 AttackBarricade(deltaTime);
+                _animator.TickIdle(deltaTime);
                 return;
             }
 
             _targetBarricade = null;
 
+            if (_animator.IsLunging)
+            {
+                _animator.TickLunge(deltaTime);
+                return;
+            }
+
             if (_reachedCenter)
             {
                 AttackCenter(deltaTime);
+                _animator.TickIdle(deltaTime);
                 return;
             }
 
@@ -101,10 +111,12 @@ namespace _Project.Code.Scripts.EnemySystem
             {
                 _reachedCenter = true;
                 _attackTimer = 0f;
+                _animator.ResetScale();
                 return;
             }
 
             transform.position += dir.normalized * _speed * deltaTime;
+            _animator.TickWalk(deltaTime);
         }
 
         private void AttackCenter(float deltaTime)
@@ -114,6 +126,7 @@ namespace _Project.Code.Scripts.EnemySystem
             {
                 _centerTarget.TakeDamage(_centerDamage);
                 _attackTimer = _attackInterval;
+                _animator.StartLunge(_centerTarget.transform.position);
             }
         }
 
@@ -124,6 +137,7 @@ namespace _Project.Code.Scripts.EnemySystem
             {
                 _targetBarricade.TakeDamage(_barricadeDamage);
                 _attackTimer = _attackInterval;
+                _animator.StartLunge(_targetBarricade.transform.position);
             }
         }
 

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8872008671421874754}
   - component: {fileID: 590823364964350610}
-  - component: {fileID: -7785328315022490387}
   - component: {fileID: 96513774714026447}
+  - component: {fileID: -7785328315022490387}
+  - component: {fileID: -5954932238528827506}
   m_Layer: 0
-  m_Name: PREF_MediumEnemy
+  m_Name: PREF_EnemyParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,18 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7785328315022490387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639038669695859728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c58c187f82f1224492930a479e84dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.Enemy
 --- !u!70 &96513774714026447
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +130,34 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.03}
   m_Size: {x: 0.61, y: 0.9}
   m_Direction: 0
+--- !u!114 &-7785328315022490387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639038669695859728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58c187f82f1224492930a479e84dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.Enemy
+  _animator: {fileID: -5954932238528827506}
+--- !u!114 &-5954932238528827506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639038669695859728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179c6a1ac54f2a346893b525cbf0eeb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.EnemySystem.EnemyAnimator
+  _wobbleSpeed: 8
+  _wobbleAmount: 0.1
+  _idleSpeed: 2.5
+  _idleAmount: 0.04
+  _lungeDistance: 0.3
+  _lungeDuration: 0.35
