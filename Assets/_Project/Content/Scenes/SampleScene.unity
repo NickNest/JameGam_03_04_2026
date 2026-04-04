@@ -1992,8 +1992,8 @@ MonoBehaviour:
   _taskSystemView: {fileID: 1470315914}
   _craftStantionView: {fileID: 846326912}
   _gameConfig: {fileID: 11400000, guid: a200154b4fa9ce941b193b5923158e60, type: 2}
-  _taskConfig: {fileID: 0}
-  _gardenBed: {fileID: 0}
+  _taskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
+  _gardenBed: {fileID: 1221292734}
 --- !u!4 &835447615
 Transform:
   m_ObjectHideFlags: 0

@@ -64,6 +64,9 @@ namespace _Project.Code.Scripts.InputResolverService
             if (TryWorldRaycast(screenPos, out RaycastHit hit))
                 return new InputEventData(button, InputTarget.World, screenPos, hit.collider.gameObject, hit);
 
+            if (TryWorld2DRaycast(screenPos, out RaycastHit2D hit2D))
+                return new InputEventData(button, InputTarget.World, screenPos, hit2D.collider.gameObject, null, hit2D);
+
             return new InputEventData(button, InputTarget.None, screenPos, null, null);
         }
 
@@ -100,6 +103,21 @@ namespace _Project.Code.Scripts.InputResolverService
 
             Ray ray = cam.ScreenPointToRay(screenPos);
             return Physics.Raycast(ray, out hit, _worldRaycastDistance, _worldLayerMask);
+        }
+
+        private bool TryWorld2DRaycast(Vector2 screenPos, out RaycastHit2D hit2D)
+        {
+            Camera cam = _camera ? _camera : Camera.main;
+
+            if (cam == null)
+            {
+                hit2D = default;
+                return false;
+            }
+
+            Ray ray = cam.ScreenPointToRay(screenPos);
+            hit2D = Physics2D.GetRayIntersection(ray, _worldRaycastDistance, _worldLayerMask);
+            return hit2D.collider != null;
         }
     }
 }
