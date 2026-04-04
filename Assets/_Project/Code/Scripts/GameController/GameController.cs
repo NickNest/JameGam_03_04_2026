@@ -1,25 +1,28 @@
 using System.Collections.Generic;
+using _Project.Code.Scripts.UIService;
 using UnityEngine;
 
 namespace _Project.Code.Scripts.GameController
 {
     public class GameController : MonoBehaviour {
+        
+        private List<IManualUpdate> _manualUpdates = new();
 
-        private List<IManualUpdate> _manualAwakes = new();
+        public void ManualAwake(List<IManualUpdate> manualUpdates) {
+            _manualUpdates = manualUpdates;
 
-        public void ManualAwake(List<IManualUpdate> manualAwakes) {
-            _manualAwakes = manualAwakes;
+            ManualStart();
         }
 
-        public void ManualStart() {
-
+        private void ManualStart()
+        {
         }
 
         public void Update()
         {
-            foreach (var manualAwake in _manualAwakes)
+            foreach (var manualUpdate in _manualUpdates)
             {
-                manualAwake.ManualUpdate(Time.deltaTime);
+                manualUpdate.ManualUpdate(Time.deltaTime);
             }
         }
     }

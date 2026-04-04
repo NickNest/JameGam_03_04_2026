@@ -2,7 +2,7 @@
 
 namespace _Project.Code.Scripts
 {
-    [CreateAssetMenu(fileName = "GameData", menuName = "GameData")]
+    [CreateAssetMenu(fileName = "GameConfig", menuName = "GameConfig")]
     public class GameConfig: ScriptableObject
     {
         public int CreditStartAmount;

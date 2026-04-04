@@ -3,21 +3,21 @@ using UnityEngine;
 
 namespace _Project.Code.Scripts.InputResolverService
 {
-    internal enum MouseButton
+    public enum MouseButton
     {
         Left = 0,
         Right = 1,
         Middle = 2
     }
 
-    internal enum InputTarget
+    public enum InputTarget
     {
         None,
         Canvas,
         World
     }
 
-    internal readonly struct InputEventData
+    public readonly struct InputEventData
     {
         public readonly MouseButton Button;
         public readonly InputTarget Target;

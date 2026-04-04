@@ -2,7 +2,7 @@ using System;
 
 namespace _Project.Code.Scripts.InputResolverService
 {
-    internal interface IInputResolver
+    public interface IInputResolver
     {
         event Action<InputEventData> OnPointerDown;
         event Action<InputEventData> OnPointerHeld;
