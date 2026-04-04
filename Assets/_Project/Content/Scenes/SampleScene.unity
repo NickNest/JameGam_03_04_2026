@@ -357,7 +357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Garden.GardenBedSlot
   _id: 4
   _plantParent: {fileID: 1731241870}
-  _plantPrefabs: []
+  _plantPrefabs:
+  - {fileID: 2504823029027986231, guid: cf43c84985e6cf54992be92f8844b597, type: 3}
+  - {fileID: 2504823029027986231, guid: bf527dfaa2cd4c247b25c6c2bb7b8b45, type: 3}
+  - {fileID: 2504823029027986231, guid: 9f9715ba1c2db49418a5502216f3140b, type: 3}
 --- !u!4 &143550392
 Transform:
   m_ObjectHideFlags: 0
@@ -700,7 +703,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Garden.GardenBedSlot
   _id: 0
   _plantParent: {fileID: 975102988}
-  _plantPrefabs: []
+  _plantPrefabs:
+  - {fileID: 2504823029027986231, guid: cf43c84985e6cf54992be92f8844b597, type: 3}
+  - {fileID: 2504823029027986231, guid: bf527dfaa2cd4c247b25c6c2bb7b8b45, type: 3}
+  - {fileID: 2504823029027986231, guid: 9f9715ba1c2db49418a5502216f3140b, type: 3}
 --- !u!4 &382477789
 Transform:
   m_ObjectHideFlags: 0
@@ -1770,7 +1776,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Garden.GardenBedSlot
   _id: 1
   _plantParent: {fileID: 783599761}
-  _plantPrefabs: []
+  _plantPrefabs:
+  - {fileID: 2504823029027986231, guid: cf43c84985e6cf54992be92f8844b597, type: 3}
+  - {fileID: 2504823029027986231, guid: bf527dfaa2cd4c247b25c6c2bb7b8b45, type: 3}
+  - {fileID: 2504823029027986231, guid: 9f9715ba1c2db49418a5502216f3140b, type: 3}
 --- !u!4 &783789410
 Transform:
   m_ObjectHideFlags: 0
@@ -1992,8 +2001,8 @@ MonoBehaviour:
   _taskSystemView: {fileID: 1470315914}
   _craftStantionView: {fileID: 846326912}
   _gameConfig: {fileID: 11400000, guid: a200154b4fa9ce941b193b5923158e60, type: 2}
-  _taskConfig: {fileID: 0}
-  _gardenBed: {fileID: 0}
+  _taskConfig: {fileID: 11400000, guid: 3c90f997bcacc644fb57030cb9e26e74, type: 2}
+  _gardenBed: {fileID: 1221292734}
 --- !u!4 &835447615
 Transform:
   m_ObjectHideFlags: 0
@@ -2181,7 +2190,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Garden.GardenBedSlot
   _id: 3
   _plantParent: {fileID: 1494520897}
-  _plantPrefabs: []
+  _plantPrefabs:
+  - {fileID: 2504823029027986231, guid: cf43c84985e6cf54992be92f8844b597, type: 3}
+  - {fileID: 2504823029027986231, guid: bf527dfaa2cd4c247b25c6c2bb7b8b45, type: 3}
+  - {fileID: 2504823029027986231, guid: 9f9715ba1c2db49418a5502216f3140b, type: 3}
 --- !u!4 &1247365959
 Transform:
   m_ObjectHideFlags: 0
@@ -2410,7 +2422,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.Garden.GardenBedSlot
   _id: 2
   _plantParent: {fileID: 674730317}
-  _plantPrefabs: []
+  _plantPrefabs:
+  - {fileID: 2504823029027986231, guid: cf43c84985e6cf54992be92f8844b597, type: 3}
+  - {fileID: 2504823029027986231, guid: bf527dfaa2cd4c247b25c6c2bb7b8b45, type: 3}
+  - {fileID: 2504823029027986231, guid: 9f9715ba1c2db49418a5502216f3140b, type: 3}
 --- !u!4 &1400889389
 Transform:
   m_ObjectHideFlags: 0
